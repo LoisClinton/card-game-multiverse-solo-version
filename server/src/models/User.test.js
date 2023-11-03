@@ -1,7 +1,6 @@
 const { describe, it, expect, beforeAll, afterAll } = require("@jest/globals");
-const { User } = require("./User");
+const { User } = require("./index.js");
 const { db } = require("../db/config");
-const { seed, randInt } = require("../db/seed");
 
 // define in global scope
 let user;
@@ -14,7 +13,7 @@ beforeAll(async () => {
 });
 
 // clear db after tests
-// afterAll(async () => await db.sync({ force: true }));
+afterAll(async () => await db.sync({ force: true }));
 
 describe("User", () => {
   it("Is an instnce of User", async () => {
