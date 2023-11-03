@@ -17,8 +17,8 @@ User.init(
   {
     sequelize: db,
     modelName: "User",
-  },
-  { freezeTableName: true }
+  }
+  // { freezeTableName: true }
 );
 
 module.exports = {

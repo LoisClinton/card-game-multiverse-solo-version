@@ -21,8 +21,8 @@ Attack.init(
   {
     sequelize: db,
     modelName: "Attack",
-  },
-  { freezeTableName: true }
+  }
+  // { freezeTableName: true }
 );
 
 module.exports = {

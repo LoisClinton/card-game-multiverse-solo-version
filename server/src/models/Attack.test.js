@@ -7,7 +7,7 @@ let attack;
 
 // clear db and create new attack before tests
 beforeAll(async () => {
-  await db.sync({ force: true });
+  // await db.sync({ force: true });
   attack = await Attack.create({
     name: "myAttack",
     title: "vaporize",

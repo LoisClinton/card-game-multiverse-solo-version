@@ -1,5 +1,6 @@
 const { describe, it, expect, beforeAll, afterAll } = require("@jest/globals");
 const { Card } = require("./index.js");
+const { Attack } = require("./index.js");
 const { db } = require("../db/config");
 
 // define in global scope
@@ -7,7 +8,7 @@ let card;
 
 // clear db and create new card before tests
 beforeAll(async () => {
-  await db.sync({ force: true });
+  // await db.sync({ force: true });
   card = await Card.create({
     name: "myCard",
     mojo: 50,
@@ -45,8 +46,20 @@ describe("Card", () => {
     expect(card.imgUrl).toBe("www.this-url.com");
   });
 
+  //EXTENSIONS
+  it("Cards can be loaded with its Attacks", async () => {
+    const attack = await Attack.create({
+      name: "myAttack",
+      title: "vaporize",
+      mojoCost: 47,
+      staminaCost: 37,
+    });
+    await card.setAttacks(attack);
+    const result = await card.getAttacks();
+    expect(result[0]).toBeInstanceOf(Attack);
+  });
+
   /**
    * Create more tests
    */
-  //Cards can be loaded with its Attacks
 });

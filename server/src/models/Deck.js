@@ -18,8 +18,8 @@ Deck.init(
   {
     sequelize: db,
     modelName: "Deck",
-  },
-  { freezeTableName: true }
+  }
+  // { freezeTableName: true }
 );
 
 module.exports = {

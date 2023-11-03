@@ -1,5 +1,5 @@
 const { db } = require("./config");
-const { User, Deck, Card, Attack } = require("../models");
+const { User, Deck, Card, Attack } = require("../models/index.js");
 
 function randInt(a, b) {
   return a + Math.floor(Math.random() * (b - a));
@@ -65,6 +65,6 @@ async function seed() {
   console.log("Database seeded");
 }
 
-seed();
+// seed();
 
 module.exports = { seed, randInt };

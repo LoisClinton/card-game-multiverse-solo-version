@@ -21,7 +21,7 @@ Card.init(
     sequelize: db,
     modelName: "Card",
   },
-  { freezeTableName: true }
+  // { freezeTableName: true }
 );
 
 module.exports = {

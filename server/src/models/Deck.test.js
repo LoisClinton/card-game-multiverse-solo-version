@@ -1,5 +1,6 @@
 const { describe, it, expect, beforeAll, afterAll } = require("@jest/globals");
 const { Deck } = require("./index.js");
+const { Card } = require("./index.js");
 const { db } = require("../db/config");
 
 // define in global scope
@@ -7,7 +8,7 @@ let deck;
 
 // clear db and create new deck before tests
 beforeAll(async () => {
-  await db.sync({ force: true });
+  // await db.sync({ force: true });
   deck = await Deck.create({ name: "myDeck", xp: 4567 });
 });
 
@@ -32,9 +33,20 @@ describe("Deck", () => {
     expect(deck.xp).toBe(4567);
   });
 
+  // EXTENSIONS
+  it("A Deck can be loaded with its Cards", async () => {
+    const card = await Card.create({
+      name: "myCard",
+      mojo: 50,
+      stamina: 509,
+      imgUrl: "www.this-url.com",
+    });
+    await deck.setCards(card);
+    const userCard = await deck.getCards();
+    expect(userCard[0]).toBeInstanceOf(Card);
+  });
+
   /**
    * Create more tests
    */
-
-  // A Deck can be loaded with its Cards
 });

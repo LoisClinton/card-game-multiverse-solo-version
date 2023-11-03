@@ -1,5 +1,4 @@
 // add your database connection here
-
 const path = require("path");
 const { Sequelize, Model, DataTypes } = require("sequelize");
 
